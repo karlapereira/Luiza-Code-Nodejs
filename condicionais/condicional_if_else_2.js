@@ -1,4 +1,4 @@
-let senha = "admin123";
+let senha = "admin";
 let senhaCorreta = "admin123";
 
 if(senha === senhaCorreta){

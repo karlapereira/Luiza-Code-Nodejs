@@ -1,12 +1,17 @@
-// contexto global
-let sistemaUniverso = "Solar";
+// scope - contexto atual do código
+// escopo global - variáveis, funções que podem ser acessadas de qualquer parte do codigo
+// escopo local - variáveis, funções que podem ser acessadas e manipuladas apenas dentro do contexto/codigo específico
 
-function printPlanetas(){
-    // contexto local
-    let planetas = ["Mercúrio", "Vênus", "Terra", "Marte"]
+
+// variavel global
+let universo = "Solar";
+
+function exibirPlanetas(){
+    // variavel local
+    let planetas = ["Marte", "Terra", "Júpiter"]
     console.log(planetas)
-    console.log(sistemaUniverso)
-}
+    console.log(universo)
+};
 
-console.log(sistemaUniverso) //Solar
-printPlanetas()
+console.log(universo)
+exibirPlanetas()

@@ -2,19 +2,20 @@
 // break: serve para interromper o laço de repeticão se caso um condição for atendida
 
 for(let i=0; i<=10; i++){
-    console.log(i)
+    console.log(i);
 }
 
 for(let i=0; i<=10; i++){
-    if(i===5){
+    if(i===4){
         continue
     }
-    console.log(i)
+    console.log(i);
 }
 
 for(let i=0; i<=10; i++){
-    if(i===5){
+    if(i===4){
         break
     }
-    console.log(i)
+    console.log(i);
 }
+
