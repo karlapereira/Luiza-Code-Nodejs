@@ -17,7 +17,7 @@
 
   use('luiza_code');
   db.clients.insertOne(
-    {'_id': 5, 'name': 'Gabi', 'email': 'Gabi@gmail.com'}
+    {'name': 'Gabi', 'email': 'Gabi@gmail.com'}
   );
 
   use('luiza_code');
@@ -42,26 +42,37 @@
 // -----  2. READ -------
   use('luiza_code');
   db.clients.find()
+
   use('luiza_code');
   db.clients.find().pretty()
+
   use('luiza_code');
   db.products.find().pretty()
+
   use('luiza_code');
   db.wishlists.find().pretty()
 
-  // operadores gt e lt
+
+
+
+  // operadores gt e lt >=, <=, >, <
   use('luiza_code');
   db.products.find(
     {price: {$gte: 5000}}
   )
+
   use('luiza_code');
   db.products.find(
     {price: {$lte: 5000}}
   )
+
   use('luiza_code');
   db.products.find(
     {price: 200.00}
   )
+
+
+
 
 
 
@@ -76,24 +87,42 @@
   use('luiza_code');
   db.clients.find(
     {name: {$regex: "a$"}}
-  )
+  );
 
 
-  use('luiza_code');
+
+
+
+
+
+
   // operadores lógicos e /ou 
+  use('luiza_code');
   db.products.find(
     {$or: [
-        { price: {$gte: 5000.00}, quantity: {$gte:50}}
+        { price: {$gte: 5000.00}}, {quantity:12}
       ]
     }
-  )
+  );
+
   use('luiza_code');
   db.products.find(
     {$and: [
-        { price: {$gte: 5000.00}, quantity: {$gte:15}}
+        { price: {$gte: 5000.00}}, {quantity: {$gte:15}}
+      ]
+    }
+  );
+
+
+  use('luiza_code');
+  db.products.find(
+    {
+      $and: [
+        {price: {$lte: 5000}}, {quantity: {$gte: 10} }
       ]
     }
   )
+
 
 
   // operadores all/in
@@ -107,40 +136,43 @@
     {id_products: {$in: [101, 105]} }
   )
 
+
+
+
+
   // limit
   use('luiza_code');
   db.wishlists.find(
     {id_products: {$in: [101, 105]} }
   ).limit(1)
 
+
   // sorte 1 asc or -1 desc
   use('luiza_code');
-  db.wishlists.find().sort({"price": 1})
+  db.products.find().sort({"price": -1})
+
+
 
 // -----  3. Update -------
   /* A função update recebe dois objetos como parâmetro, 
     o primeiro é a query para busca, 
     e o segundo objeto é o replace.
   */
-  use('luiza_code');
-  db.products.update(
-    {name: 'Notebook'},
-    {'_id': 101, 'name': 'Notebook', 'price': 5750.00, 'quantity': 18, 'updated_at': now()}
-  )
 
   /** O operador set é usado quando queremos evitar que a substituição inteira do document aconteça, ou seja, 
   quando queremos acrescentar e / ou alterar somente alguns campos no document, sem apagar todos os outros. */
   use('luiza_code');
   db.products.update(
     { _id: 101},
-    { $set:  {'price': 5780.00}}
+    { $set:  {'price': 5750.00}}
   )
 
   //Cria um novo document, caso não exista nenhum com as características passadas.
   use('luiza_code');
-  db.products.update(
-    { _id: 101},
-    { $set:  {'price': 5780.00}, {$upsert: true}}
+  db.products.updateOne(
+    { _id: 107},
+    { $set:  {'price': 5780.00}}, 
+    { upsert: true}
   )
 
   // Remove os campos especificados nele.
@@ -150,17 +182,13 @@
     { $unset: {price: 5780.00}}
   )
 
-  use('luiza_code');
-  db.products.updateMany(
-    {updated_at: new Date()}
-  )
 
 
 // 4. Delete
   // As operações de exclusão removem documentos de uma coleção.
   use('luiza_code');
   db.products.deleteMany(
-    {price: {$gte: 10000.00}}
+    {_id: 107}
   )
 
 
@@ -174,21 +202,45 @@
 
 // 5. Agregações
   //As operações de agregação processam vários documentos e retornam os resultados calculados
+  
+  use('luiza_code');
+  db.products.aggregate(
+    [
+      {
+        $group: {
+            '_id': {},
+            'min_price': {$min: '$price'}, 
+            'max_price': {$max: '$price'}, 
+            'sum_price': {$sum: '$price'}, 
+            'avg_price': {$avg: '$price'},
+            'total_quantity': {$sum: '$quantity'}
+          }
+      },
+      { 
+        $sort: {_id:1}
+      }
+    ]
+  );
+  
+  use('luiza_code');
+  db.wishlists.find()
+
   use('luiza_code');
   db.wishlists.aggregate(
     [
-      {
+      { //filter
         $match:{'id_products': 101}
       },
       {
-        $group: {'_id': 
+        $group: {'_id':
           {
-            'client_id': '$client_id', 
-            'id_products': '$id_products'
+            'client_id': '$client_id'          
           }
         },
       },
-      { $sort: {"_id":1}}
+      { 
+        $sort: {'client_id':1}
+      }
     ]
   );
 
@@ -197,8 +249,7 @@
   db.products.count();
 
   use('luiza_code');
-  db.wishlists.distinct();
-
+  db.wishlists.distinct('client_id');
 
 
 
@@ -206,7 +257,7 @@
   use('luiza_code');
   db.products.find(
     {name: "Notebook"}
-  ).explain()
+  ).explain();
 
 
   use('luiza_code');
@@ -221,4 +272,3 @@
   db.products.find(
     {name: "Notebook"}
   ).explain()
-  
