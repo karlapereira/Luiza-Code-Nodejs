@@ -1,5 +1,6 @@
-﻿let varVerdadeira = new Boolean(true);
-let varFalsa = new Boolean(false);
+﻿// objeto Boolean
+let varVerdadeira = new Boolean(20);
+let varFalsa = new Boolean();
 
 console.log("");
 console.log(varVerdadeira.valueOf());

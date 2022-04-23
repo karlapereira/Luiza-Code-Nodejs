@@ -1,26 +1,26 @@
-let listaNumeros = [1, 2, 3, 4, 5]
+let listaLetras = ["A", "B", "C", "D", "E"]
 let indexElemento = 0 
 
 //length - tamanho da lista
-console.log(listaNumeros.length)
+//console.log(listaLetras.length);
 
 //pop() - remover um item no final da nossa lista
-console.log(listaNumeros.pop())
+//listaLetras.pop()
 
 //push() - adicionar um elemento no fim da nossa lista
-listaNumeros.push(6)
+//listaLetras.push("F");
 
 //shift() - remove um elemento no inicio da lista
-console.log(listaNumeros.shift())
+//console.log(listaLetras.shift());
 
 //unshift() - adicionar um elemento no inicio da lista
-listaNumeros.unshift(0)
+//listaLetras.unshift("AA");
 
 //indexOf() - retorna o indice do elemento da nossa lista
-indexElemento = listaNumeros.indexOf(4)
+indexElemento = listaLetras.indexOf("C");
 //console.log(indexElemento)
 
 //splice(pos, quantidade) - remove 1 item pela posição 
-listaNumeros.splice(indexElemento, 2)
+listaLetras.splice(indexElemento, 2);
 
-console.log("Lista: "+listaNumeros)
+console.log(`Lista ${listaLetras}`);

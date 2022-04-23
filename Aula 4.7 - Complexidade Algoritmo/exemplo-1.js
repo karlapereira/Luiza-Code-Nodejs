@@ -7,11 +7,9 @@
 let N = 10;
 
 function exemplo1(N){
-    for(let i=0; i<N; i++){                //O(N)
+    for(let i=0; i<N; i++){               
         if(i%2 === 0) console.log(i); 
     }
 }
 
 exemplo1(N)
-
-// >> O(N)

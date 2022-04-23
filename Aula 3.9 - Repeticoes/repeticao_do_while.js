@@ -1,7 +1,7 @@
 let i = 1;
-let resultado = 0;
+let resultado = 11;
 
-do{
-    console.log(resultado);
+do{ 
     resultado = resultado + 1;
+    console.log(resultado);
 }while(resultado <= 10);

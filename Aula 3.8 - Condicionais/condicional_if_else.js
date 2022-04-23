@@ -1,12 +1,15 @@
 let semaforo = 'vermelho';
 
+
 if(semaforo === 'verde'){
     console.log("Pode passar!");
 }else if(semaforo === 'amarelo'){
     console.log("Preste atenção!");
-}else{
-    console.log("Não pode passar!")
+}else {
+    console.log("Não pode passar!");
 }
+
+
 
 let idade = 19
 

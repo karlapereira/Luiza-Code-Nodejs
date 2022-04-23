@@ -1,12 +1,8 @@
 let i = 1;
-let resultado = 0;
+let resultado = 11;
 let flag = true;
 
-while(flag){
+while(resultado <=10){
     console.log(resultado);
-    resultado = resultado + 1;
-
-    if(resultado > 10){
-        flag = false;
-    }
+    resultado = resultado + i;
 }

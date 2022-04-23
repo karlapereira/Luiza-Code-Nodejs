@@ -2,8 +2,8 @@ let N = 10;
 
 
 function exemplo2(N){
-    for(let i=0; i<N; i++){             //O(N)
-        for(let j=0; j<N; j++){         //O(N)
+    for(let i=0; i<N; i++){            
+        for(let j=0; j<N; j++){         
             if(i !== j) console.log(i, j);
         }
     }
@@ -11,5 +11,3 @@ function exemplo2(N){
 }
 
 exemplo2(N)
-// O(N) * O(N)
-// O(N^2)

@@ -4,14 +4,16 @@
 
 
 // variavel global
-let universo = "Solar";
+let sistema = "Solar";
+
 
 function exibirPlanetas(){
     // variavel local
-    let planetas = ["Marte", "Terra", "Júpiter"]
+    let planetas = ["Marte", "Terra", "Júpiter"];
     console.log(planetas)
-    console.log(universo)
+    console.log(sistema)
 };
 
-console.log(universo)
+
+console.log(planeta)
 exibirPlanetas()

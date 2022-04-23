@@ -1,9 +1,4 @@
-﻿console.log(true);
-console.log(false);
+﻿// valores primitivos boolean
+let flagConteudo = true
 
-let varVerdadeira = true;
-let varFalsa = false;
-
-console.log("");
-console.log(varVerdadeira);
-console.log(varFalsa);
+console.log(flagConteudo)

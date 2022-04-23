@@ -1,4 +1,4 @@
-let menu = 3;
+let menu = 5;
 let mensagem = "";
 
 switch(menu){
