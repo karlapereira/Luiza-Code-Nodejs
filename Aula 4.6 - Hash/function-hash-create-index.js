@@ -1,3 +1,8 @@
+
+/**
+ * implementem hash usando outra funcao hash da criatividade de vcs
+ */
+
 let arrayHash = new Array();
 // Luiza, Maria, Luna, Gabi
 let words = ["Luiza", "Luna", "Bia", "Luana"];
