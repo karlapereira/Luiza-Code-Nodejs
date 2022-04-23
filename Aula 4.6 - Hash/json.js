@@ -1,22 +1,23 @@
 // Função Hash - mapeamento de dados grandes em dados de tamanho menor
 // json - Javascript Object Notation 
 let pessoa = {
-    "nome": "Luiza do Magalu",
+    "nome": "Luiza",
     "idade": 22,
     "empresa": "Magazine Luiza"
 }
 
+console.log(pessoa)
+
+
 // key access
-pessoa["idade"] = 26
+pessoa["estudante"] = true
+console.log(pessoa)
+console.log(pessoa["idade"]);
 
-// delete key
+// // delete key
 delete pessoa["idade"]
-
 console.log(pessoa);
 
 for(let chave in pessoa) {
-      console.log(`
-            chave: ${chave}, 
-            valor: ${pessoa[chave]}
-      `);
+      console.log(`chave: ${chave}, valor: ${pessoa[chave]}`);
 }
