@@ -7,7 +7,7 @@ function recursiveFatorial(n){
     }
     console.log("n:"+n)
     fatorial = n * recursiveFatorial(n - 1)
-    console.log("fatorial de "+n+" é "+fatorial)
+    console.log(`fatorial de : ${n} é ${fatorial}`)
     return fatorial; // chamada recursiva
 }
 
