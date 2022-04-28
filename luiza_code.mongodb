@@ -41,7 +41,7 @@
 
 // -----  2. READ -------
   use('luiza_code');
-  db.clients.find()
+  db.clients.find({_id: ObjectId("625c15c22a5492c4f809adea")});
 
   use('luiza_code');
   db.clients.find().pretty()
