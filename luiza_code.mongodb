@@ -244,9 +244,28 @@
     ]
   );
 
+    //relacionamento entre coleções
+    use('luiza_code');
+    db.wishlists.aggregate([{
+            $lookup: {
+                from: "clients",
+                localField: "client_id",
+                foreignField: "_id",
+                as: "client"
+            },
+            $lookup: {
+                from: "products",
+                localField: "id_products",
+                foreignField: "_id",
+                as: "products"
+            }
+        }
+    ]).pretty()
+
 
   use('luiza_code');
   db.products.count();
+
 
   use('luiza_code');
   db.wishlists.distinct('client_id');
