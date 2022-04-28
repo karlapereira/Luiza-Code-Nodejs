@@ -239,7 +239,7 @@
         },
       },
       { 
-        $sort: {'client_id':1}
+        $sort: {'_id.client_id':1}
       }
     ]
   );
