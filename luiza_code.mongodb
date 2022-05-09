@@ -230,34 +230,34 @@
     use('luiza_code');
     db.wishlists.aggregate(
         [
-        { //filter
-            $match:{'id_products': 101}
-        },
-        {
-            $group: {'_id':
-            {
-                'client_id': '$client_id'          
-            }
+            { //filter
+                $match:{'id_products': 101}
             },
-        },
-        { 
-            $sort: {'_id.client_id':1}
-        }
+            {
+                $group: {'_id':
+                {
+                    'client_id': '$client_id'          
+                }
+                },
+            },
+            { 
+                $sort: {'_id.client_id':1}
+            }
         ]
     );
 
     //relacionamento entre coleções
     use('luiza_code');
     db.wishlists.aggregate([
-        {
-            $lookup: {
-                from: "clients",
-                localField: "client_id",
-                foreignField: "_id",
-                as: "client"
+            {
+                $lookup: {
+                    from: "clients",
+                    localField: "client_id",
+                    foreignField: "_id",
+                    as: "client"
             }
         }
-    ]).pretty()
+    ]).pretty();
 
     use('luiza_code');
     db.wishlists.aggregate([
